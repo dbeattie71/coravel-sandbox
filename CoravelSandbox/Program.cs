@@ -59,12 +59,6 @@ try
         await dbContext.SaveChangesAsync();
     }
 
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
-
     app.UseSerilogRequestLogging();
     app.UseRouting();
     app.UseEndpoints(endpoints =>
@@ -73,12 +67,12 @@ try
     });
 
 
-    app.Services.UseScheduler(s =>
-        {
-            s.Schedule<DynamicScheduler>().Daily().RunOnceAtStart();
-        })
-        //.LogScheduledTaskProgress(test)
-        ;
+    //app.Services.UseScheduler(s =>
+    //    {
+    //        s.Schedule<DynamicScheduler>().Daily().RunOnceAtStart();
+    //    })
+    //    //.LogScheduledTaskProgress(test)
+    //    ;
 
     await app.RunAsync();
 }

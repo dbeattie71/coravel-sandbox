@@ -28,7 +28,7 @@ public class DynamicScheduler : IInvocable
     }
 }
 
-public class SomeJob : IInvocable, IDoNotAutoRegister
+public class SomeJob : IInvocable
 {
     private readonly ILogger<SomeJob> _logger;
 

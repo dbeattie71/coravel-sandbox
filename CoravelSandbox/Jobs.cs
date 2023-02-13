@@ -1,6 +1,7 @@
 ﻿using Coravel.Invocable;
 using Coravel.Pro;
 using Coravel.Scheduling.Schedule.Interfaces;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace CoravelSandbox;
 
@@ -22,25 +23,29 @@ public class DynamicScheduler : IInvocable
     {
         _logger.LogInformation("{name} Invoke", nameof(DynamicScheduler));
 
-       
+        _scheduler.ScheduleWithParams<SomeJob>(1)
+            .EveryThirtySeconds();
 
         return Task.CompletedTask;
     }
 }
 
-public class SomeJob : IInvocable
+public class SomeJob : IInvocable, IDoNotAutoRegister
 {
     private readonly ILogger<SomeJob> _logger;
+    private readonly int _groupNumber;
 
     public SomeJob(
-        ILogger<SomeJob> logger
+        ILogger<SomeJob> logger,
+        int groupNumber
         )
     {
         _logger = logger;
+        _groupNumber = groupNumber;
     }
 
     public async Task Invoke()
     {
-        _logger.LogInformation("**** SomeJob ***");
+        _logger.LogInformation($"**** SomeJob *** {_groupNumber}");
     }
 }

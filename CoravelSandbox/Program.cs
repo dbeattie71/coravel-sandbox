@@ -66,13 +66,14 @@ try
         endpoints.MapRazorPages();
     });
 
+    app.UseCoravelPro();
 
-    //app.Services.UseScheduler(s =>
-    //    {
-    //        s.Schedule<DynamicScheduler>().Daily().RunOnceAtStart();
-    //    })
-    //    //.LogScheduledTaskProgress(test)
-    //    ;
+    app.Services.UseScheduler(s =>
+        {
+            s.Schedule<DynamicScheduler>().Daily().RunOnceAtStart();
+        })
+        //.LogScheduledTaskProgress(test)
+        ;
 
     await app.RunAsync();
 }

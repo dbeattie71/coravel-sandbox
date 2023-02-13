@@ -7,9 +7,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<PackageReference Include="Coravel" Version="4.2.0" />-->
+		<PackageReference Include="Coravel" Version="4.2.0" />
 		<PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="7.0.0" />
-		<PackageReference Include="Coravel.Pro" Version="5.0.0" />
+		<PackageReference Include="Coravel.Pro" Version="5.1.0" />
 		<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.2" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 		<PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
